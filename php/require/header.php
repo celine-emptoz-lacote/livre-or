@@ -16,18 +16,38 @@
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
+
+
+
+
+
     <header>
-        <nav>
-           
+
+    <nav>
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+
             <?php if (!isset($_SESSION['connect'])) :?>
-                <a  href="index.php"><span class="icon-home" title="Accueil"></span></a>
-                <a class="connexion" href="connexion.php">Connexion</a>
+                <li><a  href="index.php">Accueil</a></li>
+                <li><a  href="connexion.php">Connexion</a></li>
+                <li><a href="livre-or.php?page=1">Livre d'or</a></li>
             <?php else :?>
-                    <a  href="index.php"><span class="icon-home" title="Accueil"></span></a>
-                    <a class="connexion" href="profil.php">Mon compte</a>
-                    <a class="connexion" href="logout.php">Déconnexion</a>
+                    <li><a  href="index.php">Accueil</a></li>
+                    <li><a  href="profil.php">Mon compte</a></li>
+                    <li><a href="livre-or.php?page=1">Livre d'or</a></li>
+                    <li><a  href="logout.php">Déconnexion</a></li>
                 
             <?php endif ;?>
+            </ul>
+        </div>
+    </nav>
+        <nav>
+           
+            
 
             
 
