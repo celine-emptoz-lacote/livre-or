@@ -44,20 +44,23 @@ $resultat = mysqli_fetch_all($query);
         </div>
 
         
+        <?php if ( isset($resultat) && !empty($resultat)) :?>
         <section class="livre-or">
         
             <h2>Livre d'or</h2>
+            <p class="livre-or-p">Ce que les gens pensent de nous</p>
             <div class="livre-or-div">
                 
                 <?php foreach ($resultat as $valeur) : ?>
                 <div>   
-                    <p><?php echo $valeur[5] ?></p>
+                    <p class="index_login"><?php echo ucfirst($valeur[5]) ?></p>
                     <p><?php echo mb_strimwidth ( $valeur[1] , '0' , '150' ,"..."); ?></p>
                 </div>
                 <?php endforeach ;?>
             </div>
         
-            <a class="connexion" href="livre-or.php">Acceder au livre d'or</a>
+            <a class="connexion" href="livre-or.php?page=1">Acceder au livre d'or</a>
         </section>
+        <?php endif ;?>
        
 <?php require 'php/require/footer.html' ?>
