@@ -254,9 +254,11 @@ header h1 {
 }
 
 .livre-or-div div {
+    width: 30%;
     margin: 1%;
     padding: 1%;
     background-color: white;
+    border-radius: 10px;
 }
 
 .index_login{
