@@ -17,7 +17,9 @@ else{
             $bd = mysqli_connect("localhost","root","","livreor");
             $requete = "INSERT INTO `commentaires`( `commentaire`, `id_utilisateur`, `date`) VALUES ('$com','$id_utilisateur',NOW())";
             $query = mysqli_query($bd,$requete);
-            $message = "Merci !";
+            $_SESSION['message'] = "Merci !";
+            header('location: livre-or.php?page=1');
+            mysqli_close($bd);
         }
         else{
             $erreur = "Veuillez entrer votre  commentaire !";
@@ -25,13 +27,7 @@ else{
     }
 }
 
-    
-
-
-
 ?>
-
-
 
 <h2 class="titre">Livre d'or</h2>
 
@@ -48,12 +44,14 @@ else{
         </p>
     </div>
 <?php endif ; ?>
+
 <form action="commentaire.php" method="POST">
     <label for="commentaire">Votre commentaire :</label>
     <textarea name="commentaire" id="commentaire" cols="30" rows="10"></textarea>
 
     <input type="submit" name="envoyer">
 </form>
+<a class="connexion" href="livre-or.php?page=1">Retour au livre d'or</a>
 
 
 <?php require 'php/require/footer.html' ?>

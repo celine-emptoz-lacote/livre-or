@@ -32,7 +32,7 @@ if( !empty($_POST))
     else{
         $erreur = "Ce login existe déjà !";
     }
-
+mysqli_close($bd);
 }
 ?>
 

@@ -27,10 +27,12 @@ if (isset($_SESSION['connect']))
                 {
                     $requete_update = "UPDATE `utilisateurs` SET `login`='$login' WHERE id = $id";
                     $query_update = mysqli_query($bd,$requete_update);
-    
+                    
+
                     $requete = "SELECT * FROM `utilisateurs` WHERE id = $id ";
                     $query = mysqli_query($bd,$requete);
                     $user = mysqli_fetch_all($query);
+                    $_SESSION['login'] = $login;
                     $message = "Modifications prisent en compte !";
                     
                 }
@@ -50,7 +52,8 @@ if (isset($_SESSION['connect']))
                 $requete = "SELECT * FROM `utilisateurs` WHERE id = $id ";
                 $query = mysqli_query($bd,$requete);
                 $user = mysqli_fetch_all($query);
-                $message = "Les modifications sont prisent en compte !";
+
+                $message = "Les modifications sont prises en compte !";
             }
             else{
                 $erreur ="Les mots de passes ne sont pas identiques";
@@ -62,7 +65,7 @@ else{
     header('location: connexion.php');
 }
 
-
+mysqli_close($bd);
 ?>
 
 <h1 class="titre">Mon compte</h1>
@@ -83,7 +86,7 @@ else{
     <input type="password" id="password" name ="password" placeholder="Entrer votre nouveau mot de passe">
 
     <label for="password2">Confirmer votre mot de passe :</label>
-    <input type="password" id="password2" name="password2" placeholder="Entrer votre nouveau mot de passe">
+    <input type="password" id="password2" name="password2" placeholder="Confirmer votre nouveau mot de passe">
 
     <input  type="submit" name="modifier" value="Modifier">
     

@@ -3,8 +3,7 @@ $title = "Connexion , décoration d'interieur";
 require 'php/require/header.php';
 
 if (!empty($_POST['valider']))
-{
-    
+{  
     $login= $_POST['login'];
     $password = $_POST['password'];
 
@@ -14,7 +13,6 @@ if (!empty($_POST['valider']))
     $query = mysqli_query($bd,$requete);
     $resultat = mysqli_fetch_all($query);
 
-    
     if ( !empty($resultat) && password_verify($password,$resultat[0][2]))
     {
         $_SESSION['connect'] = 1;
@@ -27,7 +25,10 @@ if (!empty($_POST['valider']))
     {
         $erreur = "Identifiant et/ou mot de passe incorrect";
     }
+    mysqli_close($bd);
 }
+
+
 ?>
 
 <h2 class="titre">Se connecter</h2>
@@ -54,6 +55,4 @@ if (!empty($_POST['valider']))
 
 require 'php/require/footer.html';
 unset($_SESSION["message"]);
-
-
 ?>

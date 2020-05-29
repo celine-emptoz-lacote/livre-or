@@ -6,7 +6,7 @@ $bd = mysqli_connect("localhost","root","","livreor");
 $requete = "SELECT * FROM commentaires  inner join utilisateurs ON utilisateurs.id= id_utilisateur ORDER BY rand() LIMIT 0,3 ";
 $query = mysqli_query($bd,$requete);
 $resultat = mysqli_fetch_all($query);
-
+mysqli_close($bd);
 ?>
         <div class="index-main-div">
             <section>
